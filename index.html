@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +59,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   padding: 0 20px;
   height: 60px;
   display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
 }
 .logo {
   font-family: 'Bebas Neue', sans-serif;
@@ -65,6 +67,7 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   letter-spacing: 0.08em;
   color: var(--text);
   line-height: 1;
+  flex-shrink: 0;
 }
 .logo em { color: var(--accent); font-style: normal; }
 .header-sub {
@@ -72,6 +75,57 @@ button { cursor: pointer; border: none; background: none; color: inherit; font-f
   color: var(--muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.youtube-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  background: rgba(212,240,74,0.12);
+  border: 1px solid rgba(212,240,74,0.25);
+  padding: 7px 11px;
+  border-radius: 999px;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.youtube-notice:hover {
+  background: rgba(212,240,74,0.18);
+  border-color: rgba(212,240,74,0.45);
+  transform: translateY(-1px);
+}
+
+.youtube-notice span {
+  color: var(--accent);
+}
+
+@media (max-width: 520px) {
+  .youtube-notice {
+    font-size: 11px;
+    padding: 6px 9px;
+  }
+
+  .header-sub {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .youtube-notice {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .youtube-notice::before {
+    content: "YouTube";
+    font-size: 11px;
+    color: var(--accent);
+  }
 }
 
 /* ─────────────────────────────────────────
@@ -439,6 +493,17 @@ input[type=range].vol::-webkit-slider-thumb {
 <!-- ─── HEADER ─── -->
 <header class="header">
   <span class="logo">JUGAS<em>TRACKS</em></span>
+
+  <a
+    class="youtube-notice"
+    href="https://www.youtube.com/@Jugaamadethis"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Visit Juga's YouTube channel for mixes"
+  >
+    Mixes on <span>YouTube</span>
+  </a>
+
   <span class="header-sub" id="trackCount"></span>
 </header>
 
@@ -553,15 +618,16 @@ input[type=range].vol::-webkit-slider-thumb {
    { title: "Song Name", artist: "Juga", src: "songs/track1.mp3", art: "covers/track1.jpg", genre: "Hip-Hop", year: "2024" }
 ═══════════════════════════════════════ */
 const SONGS = [
-{ title: "Jazz Solution", artist: "Jugaa", src: "songs/JazzS.mp3", art: "covers/JazzS.jpg", genre: "Deep House", year: "22/4/2026" },
-{ title: "Rari", artist: "Jugaa", src: "songs/rari.mp3", art: "covers/rari.jpg", genre: "Techno", year: "21/4/2026" },
-{ title: "Paradise", artist: "Jugaa", src: "songs/paradise.mp3", art: "covers/paradise.jpg", genre: "House", year: "17/4/2026" },
-{ title: "Some Nights", artist: "Jugaa", src: "songs/somenights.mp3", art: "covers/somenights.jpg", genre: "House", year: "14/4/2026" },
-{ title: "TN's Remix", artist: "Jugaa", src: "songs/TNS.mp3", art: "covers/TNSnew.jpg", genre: "House", year: "11/4/2026" },
-{ title: "What a lie (bad version)", artist: "Jugaa", src: "songs/Whatalie.mp3", art: "covers/Whatalie.jpg", genre: "House", year: "9/4/2026" },
-   { title: "Underground", artist: "Jugaa", src: "songs/underground.mp3", art: "covers/underground.jpg", genre: "House", year: "7/4/2026" },
-   { title: "Tekkno", artist: "Jugaa", src: "songs/Tekkno.mp3", art: "covers/Tekkno.jpg", genre: "House/Techno", year: "4/4/2026" },
-   { title: "randomshit", artist: "Jugaa", src: "songs/Randomshit.mp3", art: "covers/Randomshit.jpg", genre: "House", year: "3/4/2026" },
+{ title: "Lose Control", artist: "Jugaa", src: "songs/LC.mp3", art: "covers/LC.jpg", genre: "Techno", },
+{ title: "Jazz Solution", artist: "Jugaa", src: "songs/JazzS.mp3", art: "covers/JazzS.jpg", genre: "Deep House", },
+{ title: "Rari", artist: "Jugaa", src: "songs/rari.mp3", art: "covers/rari.jpg", genre: "Techno",  },
+{ title: "Paradise", artist: "Jugaa", src: "songs/paradise.mp3", art: "covers/paradise.jpg", genre: "House",  },
+{ title: "Some Nights", artist: "Jugaa", src: "songs/somenights.mp3", art: "covers/somenights.jpg", genre: "House",  },
+{ title: "TN's Remix", artist: "Jugaa", src: "songs/TNS.mp3", art: "covers/TNSnew.jpg", genre: "House",  },
+{ title: "What a lie (bad version)", artist: "Jugaa", src: "songs/Whatalie.mp3", art: "covers/Whatalie.jpg", genre: "House",  },
+   { title: "Underground", artist: "Jugaa", src: "songs/underground.mp3", art: "covers/underground.jpg", genre: "House",  },
+   { title: "Tekkno", artist: "Jugaa", src: "songs/Tekkno.mp3", art: "covers/Tekkno.jpg", genre: "House/Techno", },
+   { title: "randomshit", artist: "Jugaa", src: "songs/Randomshit.mp3", art: "covers/Randomshit.jpg", genre: "House", },
 
 ];
 /* ══════════════════════════════════════ */
